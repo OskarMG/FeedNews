@@ -10,12 +10,12 @@ import UIKit
 
 extension UIView {
     
-    func pin(to parent: UIView) {
+    func pin(to parent: UIView, constantLR: CGFloat = 0, constantTB: CGFloat = 0) {
         NSLayoutConstraint.activate([
-            self.topAnchor.constraint(equalTo: parent.topAnchor, constant: 0),
-            self.leadingAnchor.constraint(equalTo: parent.leadingAnchor, constant: 0),
-            self.trailingAnchor.constraint(equalTo: parent.trailingAnchor, constant: 0),
-            self.bottomAnchor.constraint(equalTo: parent.bottomAnchor, constant: 0)
+            topAnchor.constraint(equalTo:       parent.safeAreaLayoutGuide.topAnchor,       constant: constantTB),
+            leadingAnchor.constraint(equalTo:   parent.safeAreaLayoutGuide.leadingAnchor,   constant: constantLR),
+            trailingAnchor.constraint(equalTo:  parent.safeAreaLayoutGuide.trailingAnchor,  constant: -constantLR),
+            bottomAnchor.constraint(equalTo:    parent.safeAreaLayoutGuide.bottomAnchor,    constant: -constantTB)
         ])
     }
     

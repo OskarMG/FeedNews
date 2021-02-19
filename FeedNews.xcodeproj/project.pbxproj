@@ -21,6 +21,7 @@
 		70C1FBA225E00728007A6B14 /* NewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C1FBA125E00728007A6B14 /* NewsViewModel.swift */; };
 		70C1FBA825E019E5007A6B14 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C1FBA725E019E5007A6B14 /* NewsTableViewCell.swift */; };
 		70C1FBAC25E01D1B007A6B14 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C1FBAB25E01D1B007A6B14 /* Extensions.swift */; };
+		70C1FBAF25E0225D007A6B14 /* ContentStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C1FBAE25E0225D007A6B14 /* ContentStackView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		70C1FBA125E00728007A6B14 /* NewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewModel.swift; sourceTree = "<group>"; };
 		70C1FBA725E019E5007A6B14 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 		70C1FBAB25E01D1B007A6B14 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		70C1FBAE25E0225D007A6B14 /* ContentStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentStackView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +145,7 @@
 			isa = PBXGroup;
 			children = (
 				70C1FBA625E019C3007A6B14 /* Cells */,
+				70C1FBAE25E0225D007A6B14 /* ContentStackView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -234,6 +237,7 @@
 				70C1FBAC25E01D1B007A6B14 /* Extensions.swift in Sources */,
 				70C1FB9F25E00576007A6B14 /* ArticleViewModel.swift in Sources */,
 				70C1FBA225E00728007A6B14 /* NewsViewModel.swift in Sources */,
+				70C1FBAF25E0225D007A6B14 /* ContentStackView.swift in Sources */,
 				70C1FB8825DFECED007A6B14 /* NewsTableViewController.swift in Sources */,
 				70C1FB8D25DFED95007A6B14 /* Constants.swift in Sources */,
 			);
