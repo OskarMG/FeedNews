@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 
 enum Labels {
@@ -24,4 +25,8 @@ enum API {
     static func getApiUrl() -> URL {
         return URL(string: "\(API.baseUrl)\(API.key)")!
     }
+}
+
+enum Image {
+    static let newsDefaultImg = UIImage(named: "news_default_thumbnail")!
 }

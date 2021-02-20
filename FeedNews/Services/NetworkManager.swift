@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 
 class NetworkManager {
@@ -37,5 +38,17 @@ class NetworkManager {
             print(error.localizedDescription)
             return [Article]()
         }
+    }
+    
+    func downLoadImageWith(url: URL, completion: @escaping(UIImage?)->Void) {
+        URLSession.shared.dataTask(with: url) { (data, _, error) in
+            guard error == nil,
+                  let data = data,
+                  let image = UIImage(data: data) else {
+                completion(nil)
+                return
+            }
+            completion(image)
+        }.resume()
     }
 }

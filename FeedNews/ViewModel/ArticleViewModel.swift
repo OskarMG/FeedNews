@@ -12,6 +12,10 @@ struct ArticleViewModel {
     
     private let article: Article
     
+    var url: String {
+        return self.article.url
+    }
+    
     var title: String {
         return self.article.title
     }

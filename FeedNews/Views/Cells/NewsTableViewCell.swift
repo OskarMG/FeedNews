@@ -10,6 +10,13 @@ import UIKit
 class NewsTableViewCell: UITableViewCell {
     static let reuseID = "NewsTableViewCell"
     
+    let thumbnailView: UIImageView = {
+        let imageView = UIImageView(image: Image.newsDefaultImg)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
+    
     let container: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -43,6 +50,7 @@ class NewsTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         addViews()
+        setupUIElementsConstraints()
     }
     
     
@@ -51,16 +59,40 @@ class NewsTableViewCell: UITableViewCell {
     }
     
     private func addViews() {
+        contentView.addSubview(thumbnailView)
         contentView.addSubview(container)
         container.addSubview(stackView)
-        container.pin(to: contentView, constantLR: 10, constantTB: 5)
-        stackView.pin(to: container, constantLR: 0, constantTB: 0)
+    }
+    
+    private func setupUIElementsConstraints() {
+        NSLayoutConstraint.activate([
+            thumbnailView.topAnchor.constraint(equalTo:             contentView.safeAreaLayoutGuide.topAnchor),
+            thumbnailView.leadingAnchor.constraint(equalTo:         contentView.safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            thumbnailView.widthAnchor.constraint(equalToConstant:   80),
+            thumbnailView.heightAnchor.constraint(equalToConstant:  80),
+            
+            container.topAnchor.constraint(equalTo:      contentView.safeAreaLayoutGuide.topAnchor, constant: 5),
+            container.leadingAnchor.constraint(equalTo:  thumbnailView.trailingAnchor, constant: 10),
+            container.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor),
+            container.bottomAnchor.constraint(equalTo:   contentView.safeAreaLayoutGuide.bottomAnchor, constant: -5)
+        ])
+        
+        stackView.pin(to: container)
     }
     
     func setupCellWith(article: ArticleViewModel) {
         titleLabel.text = article.title
         descriptionLabel.text = article.description
+        downLoadImageWith(urlString: article.urlToImage)
     }
     
+    
+    private func downLoadImageWith(urlString: String?) {
+        guard let urlString = urlString, let url = URL(string: urlString) else { return }
+        NetworkManager.shared.downLoadImageWith(url: url) {[weak self] (image) in
+            guard let self = self else { return }
+            DispatchQueue.main.async { self.thumbnailView.image = image }
+        }
+    }
     
 }
